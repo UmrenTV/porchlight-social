@@ -1,0 +1,11 @@
+{
+  "name": "Porchlight Social",
+  "short_name": "Porchlight S",
+  "description": "A full social network in your browser: feed, friends, reactions, chat, stories and groups",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111218",
+  "theme_color": "#4f46e5",
+  "icons": []
+}

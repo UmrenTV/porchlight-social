@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Porchlight Social</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<section id="auth" class="auth" hidden aria-label="Sign in"></section>
+
+<div id="app" hidden>
+  <header class="topbar">
+    <a class="brand" href="#/feed" aria-label="Porchlight home" data-icon="lamp"><span class="brand-text">porchlight</span></a>
+    <div class="search">
+      <label for="q" class="sr">Search people and posts</label>
+      <input id="q" type="search" placeholder="Search Porchlight" autocomplete="off">
+      <div id="searchResults" class="panel search-panel" hidden></div>
+    </div>
+    <nav class="navtabs" aria-label="Main">
+      <a data-tab="feed" href="#/feed" data-icon="home" aria-label="Home"></a>
+      <a data-tab="friends" href="#/friends" data-icon="users" aria-label="Friends"></a>
+      <a data-tab="groups" href="#/groups" data-icon="group" aria-label="Groups"></a>
+      <a data-tab="events" href="#/events" data-icon="calendar" aria-label="Events"></a>
+    </nav>
+    <div class="navright">
+      <button id="btnTheme" class="iconbtn round" type="button" aria-label="Toggle dark mode"></button>
+      <button id="btnMsgs" class="iconbtn round" type="button" data-panel-btn="msgs" data-icon="chat" data-label="Messenger" aria-label="Messenger" aria-haspopup="true"></button>
+      <button id="btnNotifs" class="iconbtn round" type="button" data-panel-btn="notifs" data-icon="bell" data-label="Notifications" aria-label="Notifications" aria-haspopup="true"></button>
+      <button id="btnMe" class="iconbtn round me" type="button" data-panel-btn="me" aria-label="Account menu" aria-haspopup="true"></button>
+    </div>
+    <div id="panel" class="panel drop" hidden></div>
+  </header>
+
+  <div class="layout">
+    <aside id="left" class="side left" aria-label="Shortcuts"></aside>
+    <main id="main" class="main" tabindex="-1"></main>
+    <aside id="right" class="side right" aria-label="Contacts"></aside>
+  </div>
+
+  <div id="chatdock" class="chatdock"></div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="./app.js"></script>
+</body>
+</html>

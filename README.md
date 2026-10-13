@@ -1,31 +1,31 @@
 # Porchlight Social
 
-A full social network in your browser: feed, friends, reactions, chat, stories and groups
+A social network that runs entirely in your browser: feed, friends, reactions, chat, stories, groups — now with hashed passwords, a ranked feed, blocking, reporting, moderation, and real interaction between the tabs of your own browser.
 
-Porchlight Social is a complete social networking app that runs entirely in your browser, modelled on the classic Facebook experience. You create a local account and land in a News Feed that is already populated by a cast of demo neighbours. You can post updates and photos, react with six emoji, comment and reply, share posts with your own caption, and see a notification badge each time someone responds. Each person has a profile with a cover photo, avatar, bio and timeline. Friend requests work as you'd expect. Messenger-style chat windows dock at the bottom of the screen, and the demo friends send you believable replies. Stories disappear after 24 hours, and groups and events add community features. On a desktop, the app uses a three-column layout. On a phone, it switches to a single column with a bottom tab bar. All data, including every account, stays in local storage on this device. Accounts are local profiles, not real security: anyone using this browser can open them. Because nothing goes over the network, the other users are simulated. The app suits anyone who wants to explore, demo or prototype a social network without a server, sign-ups or tracking.
+Porchlight Social is a complete, server-free social networking app, modelled on the classic Facebook experience. You create a local account and land in a News Feed that is already populated by a cast of demo neighbours. You can post updates, react, comment, share, and see notifications. Everything lives in your browser's storage. Because there is no server, the "other people" are either scripted demo users or **other tabs of this same browser** — open a second tab, sign in as someone else, and you two genuinely interact live.
 
 ## Features
 
-- Local accounts let you sign up, log in and log out, with a persistent session, a 'switch account' menu and five seeded demo users, so the app works immediately and you can see it from more than one person's view.
-- The News Feed shows posts from you and your friends, newest first, with a 'load more' button and skeleton placeholders. A modal composer opens from 'What's on your mind?' and supports text, an attached image (stored as a data URL) and an au
-- Each post has six reactions (like, love, haha, wow, sad and angry), picked by hovering over the Like button on desktop or long-pressing it on mobile. Posts show reaction totals, and clicking the totals lists who reacted with what.
-- Threaded comments support one level of replies. You can edit or delete your own posts and comments. @mentions notify the person mentioned, and #hashtags link to a page of matching posts.
-- Sharing a post reposts it to your timeline with an optional caption. The original post appears embedded inside the share, and the original author is notified.
-- Profile pages show a cover photo, avatar, bio, details, a friends list, a photos grid and a timeline of that person's posts and shares. The 'Edit profile' form saves changes immediately.
-- The Friends page lets you search people by name and send, cancel, accept or decline friend requests. You can also unfriend people and browse 'People you may know' suggestions ranked by mutual friends.
-- The notifications dropdown and the navbar show an unread badge for reactions, comments, mentions, shares, friend requests and accepted requests. Clicking an item opens the related post or profile and marks it as read.
-- Messenger includes a conversation list with unread counts. Chat windows dock at the bottom right on desktop and open full screen on mobile. Demo users show typing indicators and reply automatically after a short delay.
-- A Stories carousel sits above the composer. You can create a text or photo story and open a full-screen viewer with progress bars and tap-to-advance. Stories expire automatically after 24 hours.
-- Groups can be created and joined or left. Each group has its own feed and member list, and the creator is the admin and can remove posts. Events support Going and Interested RSVPs, and a sidebar shows today's friend birthdays.
-- The layout is responsive: a sticky top navbar with search and badges, three columns on desktop (shortcuts, feed, contacts) and one column with a bottom tab bar on phones. A dark mode toggle is remembered between visits.
+- **Secure local accounts.** Passwords are salted and hashed with Web Crypto PBKDF2-SHA256 (210k iterations) and compared in constant time — no plaintext is ever stored. Existing accounts are migrated automatically on load; passwordless accounts are prompted to set one at next login; the demo account password is `demo1234`.
+- **Login lockout and strength rules.** After 5 failed attempts an account locks for 60 seconds (with a growing delay). Sign-up enforces 8+ characters and shows a strength meter. Settings has **Change password** and **Log out everywhere** (which rotates the session token).
+- **Ranked feed with Top / Latest.** Top ranks posts by recency (12-hour half-life decay), engagement, affinity with the author and post type; Latest is strict chronological. Your choice is remembered. Every Top post has a **"Why am I seeing this?"** explanation.
+- **Real multi-tab interaction.** Open a second tab and sign in as a different account (per-tab sessions). New posts, reactions, comments and messages propagate live between tabs via BroadcastChannel and storage events.
+- **Real vs demo accounts.** Sign-up accounts carry a **Real** badge and never auto-reply. Demo users keep their scripted replies, which you can switch off in Settings.
+- **Blocking, enforced everywhere.** Blocking removes the friendship and any pending requests and hides the person across feed, search, suggestions, friends lists, comments, reactions, chat, messenger and notifications. Settings lists blocked users for unblocking.
+- **Reporting and a moderation queue.** Report posts, comments or profiles with a reason and optional details. Reports go to the admin (the first real account, or demo user Alex), whose actions are Remove, Warn and Dismiss. Reporters see the outcome under "Your reports".
+- **Encrypted data export / import.** Export everything to a JSON file, optionally encrypted with a passphrase (AES-GCM, key via PBKDF2). Import previews, then merges or replaces. A wrong passphrase fails safely without changing anything.
+- Plus the originals: six-reaction posts, threaded comments, profiles, friend requests, Messenger, groups and events, dark mode and a responsive three-column layout.
 
 ## Run it
 
-Open `index.html` in any browser: the app is a single static page (HTML, CSS and vanilla JavaScript), works offline and keeps its data in the browser's local storage. `manifest.webmanifest` lets browsers install it as an app.
+Open `index.html` in any modern browser. The app is a single static page (HTML, CSS, vanilla JavaScript), works offline, and keeps data in local storage. `manifest.webmanifest` lets browsers install it.
 
-## Host it
+## What still truly needs a real server (and is therefore out of scope)
 
-Upload the folder to any static host (Netlify, Vercel, GitHub Pages, an S3 bucket) or serve it with `npx serve .`.
+- **Cross-device realtime.** Multi-user interaction here is between tabs of the *same* browser. Talking to someone on another machine needs a signaling/relay server.
+- **Real email.** There is no email delivery; a digest would only be a preview.
+- **Durable, large media.** Video and large albums would belong in server storage; this build keeps media in the browser only.
+- **Trustworthy identity and real security.** Local accounts are hashed but are not real authentication: anyone with this browser can open them.
 
 ## Built with
 

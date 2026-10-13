@@ -2,6 +2,36 @@
 
 All notable changes to Porchlight Social. Each version is one commit on `main`, published by the Vibe Hub app factory after its checks passed.
 
+## v2 — Local-first social features expansion (2026-10-13)
+
+Porchlight gains most of the features it previously left out, built within its static, in-browser design: hashed passwords with account lockout, a ranked feed with a 'Latest' toggle, photo albums, blocking and reporting with a moderation queue, business Pages, a Marketplace, video posts, in-browser notifications and an email digest preview. Accounts open in other tabs of the same browser now behave like real other people, with live chat, voice and video calls and live streams between tabs. Data can move to another device through an encrypted export file. A real server, cross-device realtime and real email delivery are still out of scope, and the app says so plainly.
+
+### Added
+
+- Hashed passwords, login lockout, change password, log out everywhere
+- Encrypted data export and import for moving data to another device
+- Real multi-user interaction across tabs in the same browser (live feed, chat, typing)
+- Voice and video calls between tabs via WebRTC
+- Go Live camera streaming to other tabs with live comments
+- Video posts stored in IndexedDB
+- Ranked 'Top' feed with 'Why am I seeing this?', alongside 'Latest'
+- Photo albums with lightbox
+- Blocking enforced on every surface, and a blocked-users list
+- Reporting with a moderation queue and report status
+- Business Pages with post-as-Page
+- Marketplace with listings, filters, saved items and message seller
+
+### Changed
+
+- Login now checks hashed passwords. Existing accounts are migrated, and passwordless accounts must set a password.
+- The feed defaults to Top ranking, with Latest one click away and remembered
+- Media storage moved from data URLs in local storage to IndexedDB, with existing images moved over automatically
+- Demo users are labeled. Real accounts never auto-reply, and auto-replies can be turned off.
+- Notifications gain new types: Page follows, listing messages, live started, call missed and moderation outcome
+- README 'left out' section rewritten to list what still truly needs a server
+
+Requested as: "finish the left out stuff Real authentication, password security, servers or cross-device sync (all accounts and data live in this browser's local storage); Real other people (other users are simulated demo accounts with scripted replies); Marketplace listings and business Pages; Video uploads, live streaming, and voice or video calls; Algorithmic feed ranking (the feed is chronological); Photo albums, and blocking or reporting users; Push notifications and email."
+
 ## v1 — First build (2026-10-13)
 
 A full social network in your browser: feed, friends, reactions, chat, stories and groups

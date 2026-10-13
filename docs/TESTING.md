@@ -1,4 +1,4 @@
-# Testing Porchlight Social (v1)
+# Testing Porchlight Social (v2)
 How the Vibe Hub app factory checked this version before publishing it, and how to repeat the checks.
 ## Static checks
 Every required file present, the page loads only its own files, every script parses, stylesheets balance their braces, JSON files parse.
@@ -8,13 +8,7 @@ Opened in headless Chromium on a phone (390×844, dark) and a desktop (1280×800
 
 Result: clean
 ## Acceptance scenarios
-0 of 2 scenarios passed.
-
-| Scenario | Result |
-| --- | --- |
-| Sign up, log out, log in and session survives refresh | fail: step 1 (click "Create new account"): locator.click: Timeout 3000ms exceeded. |
-| Dark mode toggle survives refresh | fail: step 1 (click "Create new account"): locator.click: Timeout 3000ms exceeded. |
-The model repaired the app 2 times during verification; the checks above are for the published files.
+No acceptance scenarios ran for this version (they need an AI key to be written from the checklist).
 ## Tester's checklist
 - [ ] Sign up for a new account, log out, log back in, then refresh the page and confirm the session and your data are still there.
 - [ ] Create a post with an image and the Friends audience, then switch to a demo account that is not your friend and confirm it can't see the post.

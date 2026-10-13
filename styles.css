@@ -34,7 +34,7 @@ html[data-theme="dark"] {
 [hidden] { display: none !important; }
 html, body { margin: 0; }
 body {
-  font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -80,6 +80,11 @@ html[data-theme="dark"] .btn.primary { color: #1c1208; }
   position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 5px;
   border-radius: 9px; background: #e41e3f; color: #fff; font-size: 11px; font-weight: 700;
   display: inline-flex; align-items: center; justify-content: center;
+}
+
+.rbadge {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 10px;
+  background: var(--accent-soft); color: var(--accent); vertical-align: middle;
 }
 
 /* Avatars */
@@ -152,7 +157,8 @@ html[data-theme="dark"] .btn.primary { color: #1c1208; }
 /* Cards */
 .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px 16px; margin-bottom: 16px; }
 .card h1 { font-size: 22px; margin: 4px 0 10px; }
-.card h2 { font-size: 18px; margin: 4px 0 10px; }
+.card h2 { font-size: 18px; margin: 4px 0 10px; display: flex; align-items: center; gap: 6px; }
+.card h2 .ic { width: 20px; height: 20px; }
 .row { display: flex; gap: 10px; align-items: flex-start; }
 .row.end { justify-content: flex-end; }
 .row.wrap { flex-wrap: wrap; }
@@ -161,12 +167,21 @@ html[data-theme="dark"] .btn.primary { color: #1c1208; }
 }
 .composer .row.end { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
 
+.feedtoggle { display: flex; align-items: center; justify-content: flex-start; }
+.seg { display: inline-flex; gap: 6px; }
+
 .post { padding: 12px 0 4px; }
 .post > * { padding-left: 16px; padding-right: 16px; }
 .post-h { display: flex; gap: 10px; align-items: center; }
 .post-h .who { flex: 1; min-width: 0; }
 .name { font-weight: 600; }
 .post-text { margin: 10px 0; white-space: pre-wrap; word-wrap: break-word; font-size: 16px; }
+.why {
+  display: inline-flex; align-items: center; gap: 5px; background: transparent; border: 0; cursor: pointer;
+  color: var(--muted); font-size: 13px; padding: 0 0 8px; text-align: left;
+}
+.why:hover { color: var(--accent); text-decoration: underline; }
+.why .ic { width: 15px; height: 15px; }
 .post-stats { display: flex; justify-content: space-between; padding-bottom: 8px; }
 .post-stats .ic { width: 15px; height: 15px; vertical-align: -3px; color: #e41e3f; fill: #e41e3f; }
 .post-actions { display: flex; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 4px 12px; margin: 0 4px; }
@@ -209,9 +224,24 @@ html[data-theme="dark"] .btn.primary { color: #1c1208; }
   border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--card); font-weight: 400;
 }
 .form .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.switchrow { display: flex; align-items: center; gap: 8px; flex-direction: row !important; font-weight: 600; }
+.switchrow input { width: auto; }
 details.card summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; align-items: center; gap: 8px; }
 details.card summary::-webkit-details-marker { display: none; }
 details.card[open] summary { margin-bottom: 12px; }
+
+/* Password strength meter */
+.meter { height: 6px; background: var(--soft); border-radius: 4px; overflow: hidden; }
+.meter span { display: block; height: 100%; width: 0; background: var(--danger); transition: width .2s, background .2s; }
+.meter.s2 span { background: #d4a017; }
+.meter.s3 span { background: #6a994e; }
+.meter.s4 span { background: #2a9d8f; }
+
+.rstatus { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: var(--soft); flex: none; }
+.r-open { color: var(--accent); background: var(--accent-soft); }
+.r-removed { color: var(--danger); }
+.r-warned { color: #d4a017; }
+.r-dismissed { color: var(--muted); }
 
 .ghead { padding: 0; overflow: hidden; }
 .ghead .cover { height: 120px; }

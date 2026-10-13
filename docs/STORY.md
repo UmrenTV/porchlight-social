@@ -64,4 +64,5 @@ Scope: full. Layout: vanilla HTML, CSS and JavaScript, offline, local storage.
 - Push notifications and email
 ## Versions
 - v1 (2026-10-13): A full social network in your browser: feed, friends, reactions, chat, stories and groups
-The current version is v1. Every version is a commit on `main`; CHANGELOG.md has the details and docs/TESTING.md how each one was checked.
+- v2 (2026-10-13): Local-first social features expansion
+The current version is v2. Every version is a commit on `main`; CHANGELOG.md has the details and docs/TESTING.md how each one was checked.
